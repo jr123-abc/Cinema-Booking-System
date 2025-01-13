@@ -1,0 +1,45 @@
+import java.util.Scanner;
+public class Theatre {
+    public static void main(String[] args) {
+
+        String[] movies = {"Avatar 2", "Solo Town","Lord of the rings", "Mandara"};
+        String[][] locations = {
+                {"C 1", "C 2"},
+                {"C 1", "C 2","C 3"},
+                {"C 1"},
+                {"C 1","C 3"}
+        };
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Available Movies:");
+        for (int i = 0; i < movies.length; i++) {
+            System.out.println((i + 1) + ". " + movies[i]);
+        }
+
+        System.out.print("\nEnter the number of the movie you want to watch: ");
+        int selectedMovie = scanner.nextInt() - 1;
+
+        if (selectedMovie >= 0 && selectedMovie < movies.length) {
+            System.out.println("\nYou selected: " + movies[selectedMovie]);
+
+            System.out.println("Available Locations:");
+            for (int i = 0; i < locations[selectedMovie].length; i++) {
+                System.out.println((i + 1) + ". " + locations[selectedMovie][i]);
+            }
+
+            System.out.print("\nEnter the number of the location: ");
+            int selectedLocation = scanner.nextInt() - 1;
+
+            if (selectedLocation >= 0 && selectedLocation < locations[selectedMovie].length) {
+                System.out.println("\nYou selected: " + locations[selectedMovie][selectedLocation]);
+            } else {
+                System.out.println("Invalid location selection. Please try again.");
+            }
+        } else {
+            System.out.println("Invalid movie selection. Please try again.");
+        }
+
+        scanner.close();
+    }
+}
